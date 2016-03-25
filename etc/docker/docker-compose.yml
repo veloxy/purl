@@ -1,0 +1,39 @@
+data:
+  image: busybox
+  volumes:
+    - ../../:/var/www/purl
+    - /vendor
+    - ~/.composer:/root/.composer
+    - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+    - /tmpfs
+  tty: true
+
+nginx:
+  image: nginx
+  links:
+    - php
+  volumes_from:
+    - data
+  volumes:
+    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+  environment:
+    DNSDOCK_ALIAS: purl.docker
+
+mysql:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: purl
+    MYSQL_USER: dev
+    MYSQL_PASSWORD: dev
+    DNSDOCK_ALIAS: mysql.purl.docker
+
+php:
+  build: php
+  working_dir: /var/www/purl
+  volumes_from:
+    - data
+  links:
+    - mysql
+
+
