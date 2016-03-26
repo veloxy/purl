@@ -31,7 +31,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/rest-bundle": "1.7.8",
         "jms/serializer-bundle": "^1.1",
-        "ramsey/uuid": "^3.3"
+        "ramsey/uuid": "^3.3",
+        "nelmio/api-doc-bundle": "^2.12"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
