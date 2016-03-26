@@ -78,6 +78,25 @@ easy_admin:
                 title: Edit Link
             new:
                 title: Add Link
+        ApiKey:
+            class: AppBundle\Entity\ApiKey
+            label: API Keys
+            disabled_actions: ['edit', 'new']
+            list:
+                title: API Keys
+                actions: ['show', 'delete']
+            add:
+                title: Edit API Key
+            new:
+                title: Add API Key
+        User:
+            class: AppBundle\Entity\User
+            list:
+              actions:
+                - 'edit'
+                - {name: 'generate_api_key', type: 'route'}
+            form:
+                fields: ['enabled', 'username', 'email', 'roles', 'lastLogin']
     site_name: 'Purl'
     design:
         color_scheme: light
@@ -86,3 +105,16 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+sensio_framework_extra:
+    view: { annotations: false }
+    router: { annotations: true }
+
+fos_rest:
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/api', priorities: ['json'], fallback_format: json, prefer_extension: true }
+            - { path: '^/', priorities: ['text/html', '*/*'], fallback_format: html, prefer_extension: true }
+    view:
+        view_response_listener: true

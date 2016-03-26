@@ -7,3 +7,10 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    api_key_user_provider:
+        class: AppBundle\Security\ApiKeyUserProvider
+        arguments:
+          - "@doctrine.orm.entity_manager"
+    apikey_authenticator:
+        class: AppBundle\Security\ApiKeyAuthenticator
+        public: false

@@ -1,0 +1,5 @@
+app_links:
+    type: rest
+    prefix: /v1
+    resource: "@AppBundle/Controller/LinksController.php"
+    name_prefix:  api_1_ # naming collision

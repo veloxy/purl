@@ -1,6 +1,12 @@
 app:
     resource: "@AppBundle/Controller/"
+    type: annotation
+    prefix: /api
+
+admin:
+    resource: "@AppBundle/Controller/AdminController.php"
     type:     annotation
+    prefix:   /admin
 
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
@@ -9,3 +15,8 @@ easy_admin_bundle:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+#app_links:
+#    type: rest
+#    prefix: /api
+#    resource: "@AppBundle/Resources/config/routes.yml"
