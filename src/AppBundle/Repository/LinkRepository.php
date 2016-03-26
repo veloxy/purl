@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -12,4 +13,30 @@ use Doctrine\ORM\EntityRepository;
  */
 class LinkRepository extends EntityRepository
 {
+    public function getAllLinks()
+    {
+        /**
+         * @var $qb QueryBuilder
+         */
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $q = $qb->select('l.id, l.url, l.code, l.clicks')->from('AppBundle:Link', 'l')->getQuery();
+        return $q->execute();
+    }
+
+    public function getLink(string $code)
+    {
+        /**
+         * @var $qb QueryBuilder
+         */
+        $qb = $this->getEntityManager()->createQueryBuilder();
+
+        $q = $qb->select('l.id, l.url, l.code, l.clicks')
+            ->from('AppBundle:Link', 'l')
+            ->where('l.code = ?1')
+            ->setParameter(1, $code)
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $q->execute();
+    }
 }
