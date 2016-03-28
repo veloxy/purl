@@ -102,6 +102,7 @@ easy_admin:
     site_name: 'Purl'
     design:
         color_scheme: light
+        brand_color: "#AE00FF"
 
 fos_user:
     db_driver: orm

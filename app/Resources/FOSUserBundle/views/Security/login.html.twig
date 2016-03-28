@@ -1,0 +1,65 @@
+{# app/Resources/FOSUserBundle/views/Security/login.html.twig #}
+{# May change depending on your app #}
+{% extends 'EasyAdminBundle:default:layout.html.twig' %}
+
+{# This removes totally the navigation #}
+{% block sidebar '' %}
+
+{% block page_title %}
+    {{ 'layout.login' | trans({}, 'FOSUserBundle') }}
+{% endblock %}
+
+{% block wrapper %}
+    <div class="container" style="padding-top: 60px">
+        {% for type, messages in app.session.flashBag.all %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block fos_user_content %}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <form action="{{ path("fos_user_security_check") }}" method="post" style="margin: 0 auto; padding: 15px; max-width: 330px;" class="theme_bootstrap_3_horizontal_layout form-horizontal">
+                <fieldset>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                    <div class="form-group">
+                        <label for="username" class="control-label required">
+                            {{ 'security.login.username'|trans({}, 'FOSUserBundle') }}
+                        </label>
+
+                        <div>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+
+                        <div>
+                            <input type="password" id="password" name="_password" required="required" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="remember_me">
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                            {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <div id="form-actions-row">
+                            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary">
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+    {% endblock fos_user_content %}
+    </div>
+{% endblock %}

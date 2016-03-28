@@ -28,13 +28,15 @@ security:
             provider: api_key_user_provider
 
         main:
-            pattern: ^/
+            pattern: ^/(admin|login|login_check|logout)
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-                # if you are using Symfony < 2.8, use the following config instead:
-                # csrf_provider: form.csrf_provider
-
+                use_forward: true
+                always_use_default_target_path: true
+                default_target_path: /admin
+                target_path_parameter: _target_path
+                use_referer: true
             logout: true
             anonymous: true
 
