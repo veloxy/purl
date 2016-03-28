@@ -71,6 +71,8 @@ easy_admin:
     entities:
         Link:
             class: AppBundle\Entity\Link
+            form:
+                fields: ['url', 'user']
             label: Links
             list:
                 title: Links
