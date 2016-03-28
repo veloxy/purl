@@ -2,10 +2,53 @@
 <html>
 <head>
     <title>Welcome to Symfony!</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <style>
         body {
-            padding-top: 70px;
+            padding-top: 100px;
+            background: url("/img/bg.jpg") no-repeat;
+            background-size: 100%;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        p.lead {
+            margin-bottom: 40px;
+        }
+
+        .form-home {
+            text-align: center;
+            width: 640px;
+            margin: 0 auto;
+        }
+
+        .form-home input {
+            display: inline;
+            max-width: 500px;
+            border-radius: 30px 0 0 30px;
+            float: left;
+            border-right: 0px;
+        }
+
+        .form-home .btn {
+            display: inline-block;
+            border-radius: 0 30px 30px 0;
+            float: left;
+            background-color: #404040;
+            border-color: #121213;
+        }
+
+        a {
+            color: #404040;
+        }
+
+        a:active {
+            color: #121213;
         }
     </style>
 </head>
