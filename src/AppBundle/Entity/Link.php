@@ -40,7 +40,7 @@ class Link
      *
      * @ORM\Column(name="clicks", type="integer")
      */
-    private $clicks;
+    private $clicks = 0;
 
     /**
      * @var User

@@ -14,3 +14,15 @@ services:
     apikey_authenticator:
         class: AppBundle\Security\ApiKeyAuthenticator
         public: false
+
+    app_bundle.code_generator.service:
+        class: AppBundle\Service\CodeGeneratorService
+        arguments:
+            - "tetdajhdawdh"
+
+    app_bundle.link_code_generator.listener:
+        class: AppBundle\EventListener\LinkCodeGenerator
+        arguments:
+            - "@app_bundle.code_generator.service"
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
