@@ -13,13 +13,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class LinkRepository extends EntityRepository
 {
-    public function getAllLinks()
+    public function getAllLinksByUserId($id)
     {
         /**
          * @var $qb QueryBuilder
          */
         $qb = $this->getEntityManager()->createQueryBuilder();
-        $q = $qb->select('l.id, l.url, l.code, l.clicks')->from('AppBundle:Link', 'l')->getQuery();
+        $q = $qb->select('l.id, l.url, l.code, l.clicks')
+            ->from('AppBundle:Link', 'l')
+            ->where('l.user_id = ?1')
+            ->setParameter(1, $id)
+            ->getQuery();
+
         return $q->execute();
     }
 
@@ -37,6 +42,6 @@ class LinkRepository extends EntityRepository
             ->setMaxResults(1)
             ->getQuery();
 
-        return $q->execute();
+        return $q->execute()[0];
     }
 }
