@@ -1,5 +1,9 @@
-app:
-    resource: "@AppBundle/Controller/"
+home:
+    resource: "@AppBundle/Controller/HomeController.php"
+    type: annotation
+
+links:
+    resource: "@AppBundle/Controller/LinksController.php"
     type: annotation
     prefix: /api
 
@@ -18,8 +22,8 @@ fos_user:
 
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api/v1/doc
-#app_links:
-#    type: rest
-#    prefix: /api
-#    resource: "@AppBundle/Resources/config/routes.yml"
+    prefix:   /docs
+
+redirect:
+    resource: "@AppBundle/Controller/RedirectController.php"
+    type: annotation

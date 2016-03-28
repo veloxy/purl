@@ -35,13 +35,8 @@ class ApiKeyUserProvider implements UserProviderInterface
 
     public function loadUserByUsername($username)
     {
-        return new User(
-            $username,
-            null,
-            // the roles for the user - you may choose to determine
-            // these dynamically somehow based on the user
-            array('ROLE_USER')
-        );
+        $user = $this->em->getRepository('AppBundle:User')->findOneBy(['username' => $username]);
+        return $user;
     }
 
     public function refreshUser(UserInterface $user)

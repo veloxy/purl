@@ -29,7 +29,8 @@ class LinksController extends Controller
      */
     public function getLinksAction()
     {
-        $links = $this->getDoctrine()->getRepository('AppBundle:Link')->getAllLinks();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $links = $this->getDoctrine()->getRepository('AppBundle:Link')->getAllLinksByUserId($user->getId());
         return ['links' => $links];
     }
 
