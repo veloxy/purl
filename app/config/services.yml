@@ -18,7 +18,7 @@ services:
     app_bundle.code_generator.service:
         class: AppBundle\Service\CodeGeneratorService
         arguments:
-            - "tetdajhdawdh"
+            - "%secret%"
 
     app_bundle.link_code_generator.listener:
         class: AppBundle\EventListener\LinkCodeGenerator
