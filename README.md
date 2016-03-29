@@ -63,3 +63,22 @@ alias composer-local='COMPOSER_VENDOR_DIR=_vendor /usr/local/bin/composer --no-a
 
 Now you can update local vendors using `composer-local` instead of `composer`, this will put vendors in the _vendor directory and the container wont have to load the vendors files over the mount.
 
+### Testing
+
+Go the php container:
+
+```
+docker exec -it docker_php_1 bash
+```
+
+Create a database named `test` and make sure the `dev` mysql user has access to it. Then create the schema creation for the test environment:
+
+```
+bin/console doctrine:schema:create -e test
+```
+
+Once the database is set up, you simply run `phpunit`:
+
+```
+vendor/bin/phpunit
+```

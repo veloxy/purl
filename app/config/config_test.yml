@@ -14,3 +14,15 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     mysql
+        port:     null
+        dbname:   test
+        user:     dev
+        password: dev
+        charset:  UTF8
+
+liip_functional_test: ~
