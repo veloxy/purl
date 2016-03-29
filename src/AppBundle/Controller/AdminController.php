@@ -30,10 +30,11 @@ class AdminController extends BaseAdminController
     /**
      * @Route(path = "/users/generate_api_key", name = "generate_api_key")
      * @Security("has_role('ROLE_ADMIN')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function generateApiKeyAction()
+    public function generateApiKeyAction(Request $request)
     {
-        $request = Request::createFromGlobals();
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy([
             'id' => $request->query->get('id')
         ]);
@@ -46,7 +47,6 @@ class AdminController extends BaseAdminController
         $em->persist($apiKey);
         $em->flush();
 
-        // redirect to the 'list' view of the given entity
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'show',
             'entity' => 'ApiKey',

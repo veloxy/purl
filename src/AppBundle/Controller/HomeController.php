@@ -15,6 +15,8 @@ class HomeController extends Controller
     /**
      * @Route("/")
      * @View()
+     * @param Request $request
+     * @return array
      */
     public function homeAction(Request $request)
     {
