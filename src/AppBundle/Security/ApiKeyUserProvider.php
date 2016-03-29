@@ -3,6 +3,7 @@
 namespace AppBundle\Security;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -30,6 +31,11 @@ class ApiKeyUserProvider implements UserProviderInterface
         // an API call, or do something entirely different
 //        $username = ...;
         $apiKey = $this->em->getRepository('AppBundle:ApiKey')->findOneBy(['apiKey' => $apiKey]);
+
+        if (!$apiKey || !$apiKey->getUser()) {
+            throw new UsernameNotFoundException();
+        }
+
         return $apiKey->getUser()->getUsername();
     }
 
