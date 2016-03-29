@@ -32,8 +32,10 @@ class LinkCodeGenerator implements EventSubscriber
             return;
         }
 
-        $code = $this->codeGeneratorService->generateCode();
-        $entity->setCode($code);
+        if (!$entity->getCode()) {
+            $code = $this->codeGeneratorService->generateCode();
+            $entity->setCode($code);
+        }
     }
 
     /**
