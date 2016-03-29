@@ -5,8 +5,6 @@ Purl (Petite URL) is an open source project with the goal of providing you with 
 
 ![](https://goo.gl/HstQ5n)
 
-![](https://goo.gl/6JdMCf)
-
 ## Development
 
 ### Install
@@ -41,8 +39,6 @@ bin/console fos:user:promote admin ROLE_ADMIN
 bin/console assets:install
 ```
 
-
-
 At this point, vendors are installed and ready to go. If you use an IDE that provides auto completion, it would be handy to install the vendors locally too. So exit out of the container and run the following:
 
 ```
@@ -50,6 +46,12 @@ COMPOSER_VENDOR_DIR=_vendor /usr/local/bin/composer --no-autoloader --no-scripts
 ```
 
 You will be asked to enter some parameters the default will suffice.
+
+You are now able to surf to http://purl.docker, you can log into the admin at http://purl.docker/admin using your previously created admin user.
+
+![](https://goo.gl/6JdMCf)
+
+API docs are generated at http://purl.docker/docs.
 
 #### Optional
 
