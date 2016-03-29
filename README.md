@@ -71,7 +71,7 @@ Go the php container:
 docker exec -it docker_php_1 bash
 ```
 
-Create a database named `test` and make sure the `dev` mysql user has access to it. Then create the schema creation for the test environment:
+Create a database named `test` and make sure the `dev` mysql user has access to it. Then create the schema for the test environment:
 
 ```
 bin/console doctrine:schema:create -e test
