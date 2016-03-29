@@ -10,6 +10,8 @@ class RedirectController extends Controller
 {
     /**
      * @Route("/{code}")
+     * @param $code
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function redirectToFullUrl($code)
     {
