@@ -7,9 +7,16 @@
     <style>
         body {
             padding-top: 100px;
-            background: url("/img/bg.jpg") no-repeat;
+            background: url("/img/background.jpg") no-repeat;
             background-size: 100%;
             font-family: 'Open Sans', sans-serif;
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            body {
+                background: url("/img/background@2x.jpg") no-repeat;
+                background-size: 100%;
+            }
         }
 
         h1 {
