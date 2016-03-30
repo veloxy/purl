@@ -12,7 +12,6 @@ class LinksControllerTest extends WebTestCase
     public function setup()
     {
         $this->client = static::createClient();
-        $this->loadFixtures([]);
         $this->loadFixtures([
             'AppBundle\DataFixtures\ORM\LoadUserData',
             'AppBundle\DataFixtures\ORM\LoadApiKeyData',
