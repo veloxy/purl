@@ -12,6 +12,8 @@
                         <input type="url" id="js-url" class="input-lg form-control" value="{{ app.request.schemeAndHttpHost ~ '/' ~ link.code }}">
                     </div>
                     <button type="button" data-clipboard-target="#js-url" class="btn btn-primary btn-lg">Copy</button>
+                    <br><br><br>
+                    <a href="/">Shorten another URL?</a>
                 {% else %}
                     {{ form_start(form) }}
                     <div class="form-group">
