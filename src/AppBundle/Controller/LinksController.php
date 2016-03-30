@@ -7,6 +7,7 @@ use AppBundle\Form\LinkType;
 use FOS\RestBundle\Controller\Annotations\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -74,26 +75,40 @@ class LinksController extends Controller
     public function postLinkAction(Request $request)
     {
         $link = new Link();
-        $link->setUser($this->get('security.token_storage')->getToken()->getUser())
-            ->setClicks(0)
-            ->setUrl('http://test.com')
-            ->setCode('duiwduw');
-
+        $link->setClicks(0);
+        dump(json_decode($request->getContent(), true));
         $form = $this->createForm(LinkType::class, $link);
-
+        $form->submit(json_decode($request->getContent(), true));
         $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            dump('submitted');
+        }
+dump($_POST);
+        if ($form->isValid()) {
+            dump('valid');
+        }
+//        $link->setUser($this->get('security.token_storage')->getToken()->getUser())
+//            ->setClicks(0)
+//            ->setUrl('http://test.com')
+//            ->setCode('duiwduw');
+
+//        $form = $this->createForm(LinkType::class, $link);
+
+//        $form->handleRequest($request);
 dump($link);
         if ($form->isValid()) {
-            dump('valid form'); exit;
+            dump('valid form');
         } else {
-            dump('invalid form'); exit;
+            throw new Exception('Invalid data');
+//            throw new InvalidFormException('Invalid submitted data', $form);
         }
-
         $errors = $this->get('validator')->validate($link);
         if (count($errors) > 0) {
             dump('error'); exit;
         } else {
             dump('not error'); exit;
         }
+
+        return ['link' => $link];
     }
 }
