@@ -3,24 +3,23 @@
 {% block body %}
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1>Purl.</h1>
-            <p class="lead">Purl (Petite URL) is an open source project with the goal of<br> providing you with your own private URL shortener!</p>
+            <h1>{{ 'app.name' | trans }}</h1>
+            <p class="lead">{{ 'home.lead' | trans | raw }}</p>
             <div class="form-home">
                 {% if link.id %}
                     <div class="form-group">
-                        <label class="sr-only" for="url">URL to shorten</label>
                         <input type="url" id="js-url" class="input-lg form-control" value="{{ app.request.schemeAndHttpHost ~ '/' ~ link.code }}">
                     </div>
-                    <button type="button" data-clipboard-target="#js-url" class="btn btn-primary btn-lg">Copy</button>
+                    <button type="button" data-clipboard-target="#js-url" class="btn btn-primary btn-lg">{{ 'home.copy_url_button' | trans }}</button>
                     <br><br><br>
-                    <a href="/">Shorten another URL?</a>
+                    <a href="/">{{ 'home.add_another_url' | trans }}</a>
                 {% else %}
                     {{ form_start(form) }}
                     <div class="form-group">
-                        <label class="sr-only" for="url">URL to shorten</label>
-                        {{ form_widget(form.url, {'attr': {'class': 'input-lg', 'placeholder': 'http(s)://example.com'}}) }}
+                        <label class="sr-only" for="url">{{ 'home.form.url_label' | trans }}</label>
+                        {{ form_widget(form.url, {'attr': {'class': 'input-lg', 'placeholder': 'home.form.url_placeholder' | trans }}) }}
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">Shorten URL</button>
+                    <button type="submit" class="btn btn-primary btn-lg">{{ 'home.form.submit_button' | trans }}</button>
                     {{ form_end(form) }}
                 {% endif %}
             </div>
