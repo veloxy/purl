@@ -29,7 +29,7 @@ mysql:
     DNSDOCK_ALIAS: mysql.purl.docker
 
 php:
-  build: php
+  image: yappabe/php:7.0
   working_dir: /var/www/purl
   volumes_from:
     - data

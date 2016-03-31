@@ -26,3 +26,11 @@ services:
             - "@app_bundle.code_generator.service"
         tags:
             - { name: doctrine.event_subscriber, connection: default }
+
+    app_bundle.link_visit_event.subscriber:
+        class: AppBundle\EventSubscriber\LinkVisitEventSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@request_stack"
