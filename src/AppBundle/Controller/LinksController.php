@@ -71,44 +71,30 @@ class LinksController extends Controller
      * @Route("/v1/link.{_format}", methods={"POST", "GET"})
      * @View()
      * @param Request $request
+     * @return array
      */
     public function postLinkAction(Request $request)
     {
         $link = new Link();
-        $link->setClicks(0);
-        dump(json_decode($request->getContent(), true));
+        $link->setUser($this->get('security.token_storage')->getToken()->getUser());
+
         $form = $this->createForm(LinkType::class, $link);
         $form->submit(json_decode($request->getContent(), true));
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
-            dump('submitted');
-        }
-dump($_POST);
-        if ($form->isValid()) {
-            dump('valid');
-        }
-//        $link->setUser($this->get('security.token_storage')->getToken()->getUser())
-//            ->setClicks(0)
-//            ->setUrl('http://test.com')
-//            ->setCode('duiwduw');
 
-//        $form = $this->createForm(LinkType::class, $link);
-
-//        $form->handleRequest($request);
-dump($link);
-        if ($form->isValid()) {
-            dump('valid form');
-        } else {
-            throw new Exception('Invalid data');
-//            throw new InvalidFormException('Invalid submitted data', $form);
-        }
-        $errors = $this->get('validator')->validate($link);
-        if (count($errors) > 0) {
-            dump('error'); exit;
-        } else {
-            dump('not error'); exit;
+        if (!$form->isValid()) {
+            return ['form' => $form];
         }
 
-        return ['link' => $link];
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($link);
+        $em->flush();
+
+        $linkResponse = $this->getDoctrine()->getRepository('AppBundle:Link')->getLink($link->getCode());
+
+        return [
+            'link' => $linkResponse,
+            'url' => sprintf('%s/%s', $this->getParameter('host'), $link->getCode()),
+        ];
     }
 }
