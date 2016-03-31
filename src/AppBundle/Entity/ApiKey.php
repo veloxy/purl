@@ -24,7 +24,7 @@ class ApiKey
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="apiKeys")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
