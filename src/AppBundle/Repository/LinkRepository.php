@@ -19,7 +19,7 @@ class LinkRepository extends EntityRepository
          * @var $qb QueryBuilder
          */
         $qb = $this->getEntityManager()->createQueryBuilder();
-        $q = $qb->select('l.id, l.url, l.code, l.clicks')
+        $q = $qb->select('l.id, l.url, l.code')
             ->from('AppBundle:Link', 'l')
             ->where('l.user_id = ?1')
             ->setParameter(1, $id)
@@ -35,7 +35,7 @@ class LinkRepository extends EntityRepository
          */
         $qb = $this->getEntityManager()->createQueryBuilder();
 
-        $q = $qb->select('l.id, l.url, l.code, l.clicks')
+        $q = $qb->select('l.id, l.url, l.code')
             ->from('AppBundle:Link', 'l')
             ->where('l.code = ?1')
             ->setParameter(1, $code)
