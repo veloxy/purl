@@ -6,7 +6,6 @@ use AppBundle\Entity\Visit;
 use AppBundle\Event\LinkVisitEvent;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class LinkVisitEventSubscriber implements EventSubscriberInterface
