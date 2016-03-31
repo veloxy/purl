@@ -33,3 +33,4 @@ services:
             - { name: kernel.event_subscriber }
         arguments:
             - "@doctrine.orm.entity_manager"
+            - "@request_stack"

@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Link;
-use AppBundle\Event\LinkVisitedEvent;
+use AppBundle\Event\LinkVisitEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,9 +24,9 @@ class RedirectController extends Controller
             'code' => $code
         ]);
 
-        $event = new LinkVisitedEvent($link);
+        $event = new LinkVisitEvent($link);
         $dispatcher = $this->get('event_dispatcher');
-        $dispatcher->dispatch(LinkVisitedEvent::NAME, $event);
+        $dispatcher->dispatch(LinkVisitEvent::NAME, $event);
 
         return $this->redirect($link->getUrl(), 301);
     }

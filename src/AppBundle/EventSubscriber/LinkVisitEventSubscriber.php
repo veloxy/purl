@@ -2,9 +2,12 @@
 
 namespace AppBundle\EventSubscriber;
 
-use AppBundle\Event\LinkVisitedEvent;
+use AppBundle\Entity\Visit;
+use AppBundle\Event\LinkVisitEvent;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class LinkVisitEventSubscriber implements EventSubscriberInterface
 {
@@ -14,20 +17,33 @@ class LinkVisitEventSubscriber implements EventSubscriberInterface
     protected $em;
 
     /**
+     * @var RequestStack
+     */
+    protected $requestStack;
+
+    /**
      * LinkVisitEventSubscriber constructor.
      * @param EntityManager $em
+     * @param RequestStack $requestStack
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, RequestStack $requestStack)
     {
         $this->em = $em;
+        $this->requestStack = $requestStack;
     }
 
-    public function onLinkVisit($event)
+    /**
+     * @param $event LinkVisitEvent
+     */
+    public function onLinkVisit(LinkVisitEvent $event)
     {
-        $link = $event->getLink();
-        $link->setClicks($link->getClicks() + 1);
 
-        $this->em->persist($link);
+        $visit = new Visit();
+        $visit->setLink($event->getLink())
+            ->setIpAddress($this->requestStack->getCurrentRequest()->getClientIp())
+            ->setVisitedAt(new \DateTime());
+
+        $this->em->persist($visit);
         $this->em->flush();
     }
 
@@ -52,7 +68,7 @@ class LinkVisitEventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            LinkVisitedEvent::NAME => 'onLinkVisit',
+            LinkVisitEvent::NAME => 'onLinkVisit',
         ];
     }
 }

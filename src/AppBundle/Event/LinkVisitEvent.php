@@ -5,12 +5,12 @@ namespace AppBundle\Event;
 use AppBundle\Entity\Link;
 use Symfony\Component\EventDispatcher\Event;
 
-class LinkVisitedEvent extends Event
+class LinkVisitEvent extends Event
 {
     /**
      * Event name
      */
-    const NAME = 'link.visited';
+    const NAME = 'link.visit';
 
     /**
      * @var Link
@@ -18,7 +18,7 @@ class LinkVisitedEvent extends Event
     protected $link;
 
     /**
-     * LinkVisitedEvent constructor.
+     * LinkVisitEvent constructor.
      * @param Link $link
      */
     public function __construct(Link $link)
