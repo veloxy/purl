@@ -36,18 +36,35 @@ class Link
     private $code;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="clicks", type="integer")
-     */
-    private $clicks = 0;
-
-    /**
      * @var User
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", nullable=true)
      */
     private $user;
+
+    /**
+     * @var Visit
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Visit", mappedBy="link")
+     */
+    private $visit;
+
+    /**
+     * @return Visit
+     */
+    public function getVisit()
+    {
+        return $this->visit;
+    }
+
+    /**
+     * @param Visit $visit
+     * @return Link
+     */
+    public function setVisit($visit)
+    {
+        $this->visit = $visit;
+        return $this;
+    }
 
     /**
      * @return User
@@ -123,30 +140,6 @@ class Link
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set clicks
-     *
-     * @param integer $clicks
-     *
-     * @return Link
-     */
-    public function setClicks($clicks)
-    {
-        $this->clicks = $clicks;
-
-        return $this;
-    }
-
-    /**
-     * Get clicks
-     *
-     * @return int
-     */
-    public function getClicks()
-    {
-        return $this->clicks;
     }
 }
 

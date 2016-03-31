@@ -101,8 +101,7 @@ easy_admin:
                 fields: ['enabled', 'username', 'email', 'roles', 'lastLogin']
     site_name: 'Purl'
     design:
-        color_scheme: light
-        brand_color: "#AE00FF"
+        brand_color: "#4A4A4A"
 
 fos_user:
     db_driver: orm
