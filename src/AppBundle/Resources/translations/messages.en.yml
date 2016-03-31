@@ -1,0 +1,11 @@
+app:
+    name: Purl.
+home:
+    add_another_url: Shorten another URL?
+    copy_url_button: Copy
+    lead: Purl (Petite URL) is an open source project with the goal of<br> providing you with your own private URL shortener!
+
+    form:
+        url_placeholder: http(s)://example.com
+        url_label: URL to shorten
+        submit_button: Shorten URL
