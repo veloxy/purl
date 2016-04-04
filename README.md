@@ -51,8 +51,6 @@ You are now able to surf to http://purl.docker, you can log into the admin at ht
 
 ![](https://goo.gl/6JdMCf)
 
-API docs are generated at http://purl.docker/docs.
-
 #### Optional
 
 It might be useful to create an alias to update local vendors, so add this to your .bash_profile:
