@@ -82,3 +82,76 @@ Once the database is set up, you simply run `phpunit`:
 ```
 vendor/bin/phpunit
 ```
+
+## API
+
+The api are generated, but here's a quick overview:
+ 
+#### Get all links
+
+Returns all links for user with given API key.
+
+Request:
+
+```
+curl http://purl.docker/api/v1/links.json?apiKey=<apiKey>
+```
+
+Response:
+
+```json
+{
+   "links":[
+      {
+         "id":14,
+         "url":"http:\/\/example.com",
+         "code":"LD1ZB8B"
+      }
+   ]
+}
+```
+
+#### Get specific link by code
+
+Requests data for specified link code.
+
+Request:
+
+```
+curl http://purl.docker/api/v1/link/<code>.json?apiKey=<apiKey>
+```
+
+Response:
+
+```json
+{
+   "link":{
+      "id":14,
+      "url":"http:\/\/example.com",
+      "code":"LD1ZB8B"
+   }
+}
+```
+
+#### Add a new link
+
+Adds a new link and attaches it for the user that belongs to the given API key.
+
+Request:
+
+```
+curl --data '{"url": "http://github.com"}' http://purl.docker/api/v1/link.json?apiKey=<apiKey>
+```
+
+Response:
+
+```json
+{
+   "link":{
+      "id":16,
+      "url":"http:\/\/github.com",
+      "code":"dedGv4P"
+   },
+   "url":"http:\/\/purl.docker\/dedGv4P"
+}
+```
