@@ -68,8 +68,20 @@ class LinksController extends Controller
     }
 
     /**
-     * @Route("/v1/link.{_format}", methods={"POST", "GET"})
+     * @Route("/v1/link.{_format}", methods={"POST"})
      * @View()
+     * @ApiDoc(
+     *     description="Add a link",
+     *     authentication=true,
+     *     requirements={
+     *          {
+     *               "name"="apiKey",
+     *               "dataType"="string",
+     *               "description"="Your API key"
+     *          }
+     *     },
+     *     input="AppBundle\Form\LinkType",
+     * )
      * @param Request $request
      * @return array
      */
