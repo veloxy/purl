@@ -21,7 +21,7 @@ class LinkRepository extends EntityRepository
         $qb = $this->getEntityManager()->createQueryBuilder();
         $q = $qb->select('l.id, l.url, l.code')
             ->from('AppBundle:Link', 'l')
-            ->where('l.user_id = ?1')
+            ->where('l.user = ?1')
             ->setParameter(1, $id)
             ->getQuery();
 
