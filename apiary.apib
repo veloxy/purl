@@ -1,0 +1,75 @@
+FORMAT: A1
+HOST: http://purl.docker
+
+# Purl
+
+# Group Link
+
+## List [/api/v1/links.json?apiKey={apiKey}]
+
++ Parameters
+    + apiKey: `7f74c3f0-8116-4c82-8dae-a813ef57852d` (uuid, required) - API Key
+
+### Get all links [GET]
+
+Returns a list of links connected to the user that the API key belongs to.
+    
++ Response 200 (application/json)
+        
+        {
+            "links":[
+                {
+                    "id": 14,
+                    "url": "http:\/\/example.com",
+                    "code": "LD1ZB8B"
+                }
+            ]
+        }
+        
+
+## Detail [/api/v1/link/{code}.json?apiKey={apiKey}]
+
++ Parameters
+    + apiKey: `7f74c3f0-8116-4c82-8dae-a813ef57852d` (uuid, required) - API Key
+    + code: `LD1ZB8B` (string, required) - Link code
+
+### Get link detail [GET]
+
+Returns data for specified link code. 
+Note: Data is only returned if the link belongs to the API user.
+
++ Response 200 (application/json)
+
+        {
+            "link": {
+                "id": 14,
+                "url": "http:\/\/example.com",
+                "code": "LD1ZB8B"
+            }
+        }
+
+## New [/api/v1/link.json?apiKey={apiKey}]
+
++ Parameters
+    + apiKey: `7f74c3f0-8116-4c82-8dae-a813ef57852d` (uuid, required) - API Key
+
+### Create a new link [POST] 
+
+Adds a new link and attaches it for the user that belongs to the given API key.
+
++ Request (application/json)
+
+        {
+            "url": "http://github.com"
+        }
+
++ Response 201 (application/json)
+
+        {
+            "link": {
+                "id": 16,
+                "url": "http:\/\/github.com",
+                "code": "dedGv4P"
+            },
+            "url":"http:\/\/purl.docker\/dedGv4P"
+        }
