@@ -84,3 +84,7 @@ vendor/bin/phpunit
 ## REST API
 
 REST API docs can be found [here](http://docs.purl.apiary.io/#)
+
+## Credits
+
+- Background image by Roman Pohorecki ([source](https://www.pexels.com/photo/mountains-landscape-winter-snow-15382/))
