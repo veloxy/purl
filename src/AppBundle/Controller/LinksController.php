@@ -5,9 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Link;
 use AppBundle\Form\LinkType;
 use FOS\RestBundle\Controller\Annotations\View;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,17 +14,6 @@ class LinksController extends Controller
     /**
      * @Route("/v1/links.{_format}", methods={"GET"})
      * @View()
-     * @ApiDoc(
-     *     description="Get all links",
-     *     authentication=true,
-     *     requirements={
-     *          {
-     *               "name"="apiKey",
-     *               "dataType"="string",
-     *               "description"="Your API key"
-     *          }
-     *     }
-     * )
      */
     public function getLinksAction()
     {
@@ -41,22 +28,6 @@ class LinksController extends Controller
      * @param string $code
      * @return array
      * @internal param Link $link
-     * @ApiDoc(
-     *     description="Get link by code",
-     *     authentication=true,
-     *     requirements={
-     *          {
-     *               "name"="apiKey",
-     *               "dataType"="string",
-     *               "description"="Your API key"
-     *          },
-     *          {
-     *               "name"="code",
-     *               "dataType"="string",
-     *               "description"="Short URL code"
-     *          }
-     *     }
-     * )
      */
     public function getLinkAction(string $code) : array
     {
@@ -70,18 +41,6 @@ class LinksController extends Controller
     /**
      * @Route("/v1/link.{_format}", methods={"POST"})
      * @View()
-     * @ApiDoc(
-     *     description="Add a link",
-     *     authentication=true,
-     *     requirements={
-     *          {
-     *               "name"="apiKey",
-     *               "dataType"="string",
-     *               "description"="Your API key"
-     *          }
-     *     },
-     *     input="AppBundle\Form\LinkType",
-     * )
      * @param Request $request
      * @return array
      */
