@@ -45,11 +45,11 @@ At this point, vendors are installed and ready to go. If you use an IDE that pro
 COMPOSER_VENDOR_DIR=_vendor /usr/local/bin/composer --no-autoloader --no-scripts install
 ```
 
-You will be asked to enter some parameters the default will suffice.
+You will be asked to enter some parameters, the default will suffice.
 
 You are now able to surf to http://purl.docker, you can log into the admin at http://purl.docker/admin using your previously created admin user.
 
-![](https://goo.gl/6JdMCf)
+![](https://goo.gl/uhNULT)
 
 #### Optional
 
