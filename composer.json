@@ -32,7 +32,6 @@
         "friendsofsymfony/rest-bundle": "1.7.8",
         "jms/serializer-bundle": "^1.1",
         "ramsey/uuid": "^3.3",
-        "nelmio/api-doc-bundle": "^2.12",
         "hashids/hashids": "^1.0"
     },
     "require-dev": {

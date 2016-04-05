@@ -20,10 +20,6 @@ easy_admin_bundle:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /docs
-
 redirect:
     resource: "@AppBundle/Controller/RedirectController.php"
     type: annotation
