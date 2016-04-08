@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Link
@@ -41,12 +42,14 @@ class Link
      * @var User
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", nullable=true)
+     * @JMS\Exclude()
      */
     private $user;
 
     /**
      * @var Visit
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Visit", mappedBy="link")
+     * @JMS\Exclude()
      */
     private $visit;
 
