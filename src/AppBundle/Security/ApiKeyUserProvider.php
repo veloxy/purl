@@ -3,6 +3,7 @@
 namespace AppBundle\Security;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\User;
@@ -33,7 +34,7 @@ class ApiKeyUserProvider implements UserProviderInterface
         $apiKey = $this->em->getRepository('AppBundle:ApiKey')->findOneBy(['apiKey' => $apiKey]);
 
         if (!$apiKey || !$apiKey->getUser()) {
-            throw new UsernameNotFoundException();
+            throw new AccessDeniedException();
         }
 
         return $apiKey->getUser()->getUsername();
@@ -51,7 +52,7 @@ class ApiKeyUserProvider implements UserProviderInterface
         // but in this example, the token is sent in each request,
         // so authentication can be stateless. Throwing this exception
         // is proper to make things stateless
-        throw new UnsupportedUserException();
+        throw new AccessDeniedException();
     }
 
     public function supportsClass($class)

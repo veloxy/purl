@@ -113,6 +113,8 @@ sensio_framework_extra:
     router: { annotations: true }
 
 fos_rest:
+    access_denied_listener:
+       json: true
     format_listener:
         enabled: true
         rules:
