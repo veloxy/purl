@@ -49,7 +49,7 @@ class LinksController extends Controller
         $link = new Link();
         $link->setUser($this->get('security.token_storage')->getToken()->getUser());
         
-        $form = $this->get('form.factory')->createNamed('', LinkType::class, $link);
+        $form = $this->get('form.factory')->createNamed(null, LinkType::class, $link);
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
