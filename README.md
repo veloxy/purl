@@ -32,6 +32,10 @@ bin/console assets:install
 
 You will be asked to enter some parameters, adjust them to your own needs.
 
+Once done, you should be ready to go. You can access the admin on /admin and log in using your previously created admin user.
+
+![](https://goo.gl/uhNULT)
+
 ### Testing
 
 
