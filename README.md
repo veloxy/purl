@@ -5,28 +5,19 @@ Purl (Petite URL) is an open source project with the goal of providing you with 
 
 ![](https://goo.gl/HstQ5n)
 
+This project was my first symfony project, keep in mind that there are a lot of improvements that could be made. The point of this project was to **learn** symfony, and I happened to need a URL shortener.
+
+You are welcome to send pull requests if you like!
+
 ## Development
+
+[Check the docker guide](https://github.com/veloxy/purl/tree/master/src/AppBundle/Resources/docs/docker.md) if you want to use the docker images, if you use your own workflow, continue reading!
 
 ### Install
 
-This project uses docker for development. To get started with docker, go and read the article "[Docker PHP development flow](http://tech.yappa.be/docker-php-development)"
-
-I'll assume you have docker installed and ready so we'll start off by launching the containers:
+Install the required packages.
 
 ```
-docker-compose -f etc/docker/docker-compose.yml up -d
-```
-
-Next up, we symlink the vendors to improve speed. We do this by going into the container:
-
-```shell
-docker exec -it docker_php_1 bash
-```
-
-In the container, we set up the link to the vendor folder and install the vendors:
-
-```shell
-ln -s /vendor vendor
 composer install
 ```
 
@@ -39,35 +30,10 @@ bin/console fos:user:promote admin ROLE_ADMIN
 bin/console assets:install
 ```
 
-At this point, vendors are installed and ready to go. If you use an IDE that provides auto completion, it would be handy to install the vendors locally too. So exit out of the container and run the following:
-
-```shell
-COMPOSER_VENDOR_DIR=_vendor /usr/local/bin/composer --no-autoloader --no-scripts install
-```
-
-You will be asked to enter some parameters, the default will suffice.
-
-You are now able to surf to http://purl.docker, you can log into the admin at http://purl.docker/admin using your previously created admin user.
-
-![](https://goo.gl/uhNULT)
-
-#### Optional
-
-It might be useful to create an alias to update local vendors, so add this to your .bash_profile:
-
-```shell
-alias composer-local='COMPOSER_VENDOR_DIR=_vendor /usr/local/bin/composer --no-autoloader --no-scripts'
-```
-
-Now you can update local vendors using `composer-local` instead of `composer`, this will put vendors in the _vendor directory and the container wont have to load the vendors files over the mount.
+You will be asked to enter some parameters, adjust them to your own needs.
 
 ### Testing
 
-Go the php container:
-
-```shell
-docker exec -it docker_php_1 bash
-```
 
 Create a database named `test` and make sure the `dev` mysql user has access to it. Then create the schema for the test environment:
 
