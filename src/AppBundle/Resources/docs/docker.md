@@ -5,6 +5,8 @@ To get started with docker, go and read the article "[Docker PHP development flo
 
 I'll assume you have docker installed and ready so we'll start off by launching the containers:
 
+Note: If you're using docker-compose 1.6+, you can omit the `-f etc/docker/docker-compose.yml` part from the `docker-compose` commands.
+
 ```
 docker-compose -f etc/docker/docker-compose.yml up -d
 ```
