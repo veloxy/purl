@@ -1,5 +1,6 @@
 data:
   image: busybox
+  container_name: purl_data
   volumes:
     - ../../:/var/www/purl
     - /vendor
@@ -10,6 +11,7 @@ data:
 
 nginx:
   image: nginx
+  container_name: purl_nginx
   links:
     - php
   volumes_from:
@@ -21,6 +23,7 @@ nginx:
 
 mysql:
   image: mariadb
+  container_name: purl_mysql
   environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_DATABASE: purl
@@ -30,6 +33,7 @@ mysql:
 
 php:
   image: yappabe/php:7.0
+  container_name: purl_php
   working_dir: /var/www/purl
   volumes_from:
     - data
