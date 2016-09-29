@@ -16,5 +16,4 @@
 /web/bundles/
 vendor
 _vendor/
-bin/
 app/bootstrap.php.cache
