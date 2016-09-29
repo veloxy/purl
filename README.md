@@ -1,4 +1,4 @@
-Purl
+Purl [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/veloxy/purl)
 ====
 
 Purl (Petite URL) is an open source project with the goal of providing you with your own private URL shortener!
