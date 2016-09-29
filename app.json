@@ -2,5 +2,6 @@
   "name": "Purl",
   "description": "Purl (Petite URL) is an open source project with the goal of providing you with your own private URL shortener!",
   "repository": "https://github.com/veloxy/purl",
+  "generator": "https://www.expeditedssl.com/heroku-button-maker"
   "keywords": ["symfony", "url-shortenr", "php"]
 }
