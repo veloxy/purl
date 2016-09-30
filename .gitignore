@@ -17,3 +17,4 @@
 vendor
 _vendor/
 app/bootstrap.php.cache
+node_modules
