@@ -1,0 +1,32 @@
+{
+  "name": "purl",
+  "version": "1.0.0",
+  "description": "Purl (Petite URL) is an open source project with the goal of providing you with your own private URL shortener!",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veloxy/purl.git"
+  },
+  "keywords": [
+    "symfony",
+    "url-shortenr",
+    "php"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veloxy/purl/issues"
+  },
+  "homepage": "https://github.com/veloxy/purl#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0"
+  }
+}
