@@ -8,7 +8,7 @@ gulp.task('default', ['scripts']);
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src('web/js/*.js')
+    return gulp.src('app/Resources/assets/js*.js')
         .pipe(sourcemaps.init())
         	.pipe(concat('combined.js'))
         	//only uglify if gulp is ran with '--type prod'
