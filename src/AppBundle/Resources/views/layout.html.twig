@@ -65,9 +65,10 @@
     <div class="container">
         {% block body %}{% endblock %}
     </div>
-    <script src="{{ asset('js/clipboard.min.js') }}"></script>
-    <script type="application/javascript">
-        new Clipboard('.btn');
-    </script>
+    
+    {% block javascripts %}
+    <script src="{{ asset('js/combined.js') }}"></script>
+    {%endblock%}
+
 </body>
 </html>
