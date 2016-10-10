@@ -20,6 +20,6 @@ class CodeGeneratorService
     public function generateCode()
     {
         $hashIds = new Hashids($this->salt);
-        return $hashIds->encode(time());
+        return $hashIds->encode(time() - 1000000000);
     }
 }
